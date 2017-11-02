@@ -153,7 +153,7 @@ test.serial('refuses to create a feature with an existing name', async t => {
     const { request, destroy } = await setupApp('feature_api_serial');
     return request
         .post('/api/admin/features')
-        .send({ name: 'featureX' })
+        .send({ name: 'featureX', strategies: [{ name: 'default' }] })
         .set('Content-Type', 'application/json')
         .expect(403)
         .then(destroy);
