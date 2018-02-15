@@ -50,6 +50,57 @@ test.serial('creates new feature toggle', async t => {
         .then(destroy);
 });
 
+test.serial('creates new feature toggle with complete strategies', async t => {
+    t.plan(0);
+    const { request, destroy } = await setupApp('feature_api_serial');
+
+    const input = {
+        name: 'complex-feature',
+        enabled: true,
+        description: 'super complex',
+        strategies: [
+            { name: 'default', operator: 'OR' },
+            {
+                name: 'inner-group',
+                group: [
+                    {
+                        name: 'inner-inner-group',
+                        group: [
+                            { name: 'default', operator: 'AND' },
+                            { name: 'default' },
+                        ],
+                        operator: 'AND',
+                    },
+                    { name: 'default', operator: 'AND' },
+                    { name: 'default' },
+                ],
+                operator: 'AND',
+            },
+            { name: 'default', operator: 'AND' },
+            { name: 'default' },
+        ],
+    };
+
+    return request
+        .post('/api/admin/features')
+        .send(input)
+        .set('Content-Type', 'application/json')
+        .expect(201)
+        .expect(() =>
+            request
+                .get('/api/admin/features')
+                .expect(200)
+                .expect(res => {
+                    const { features } = res.body;
+                    const stored = features.find(
+                        ({ name }) => name === input.name
+                    );
+                    t.deepEqual(stored.strategies, input.strategies);
+                })
+                .then(destroy)
+        );
+});
+
 test.serial('creates new feature toggle with createdBy unknown', async t => {
     t.plan(1);
     const { request, destroy } = await setupApp('feature_api_serial');
