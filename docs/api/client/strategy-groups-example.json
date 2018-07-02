@@ -1,0 +1,43 @@
+{
+	"version": 2,
+	"features": [
+		{
+			"name": "Feature.A",
+			"description": "lorem ipsum",
+			"enabled": true,
+			"strategies": [{
+					"name": "__internal-strategy-group",
+					"operator": "AND",
+					"group": [{
+							"name": "default",
+							"parameters": {}
+						},
+						{
+							"name": "gradualRolloutRandom",
+							"parameters": {
+								"percentage": "0"
+							}
+						}
+					]
+				},
+				{
+					"name": "__internal-strategy-group",
+					"operator": "OR",
+					"group": [{
+							"name": "userWithId",
+							"parameters": {
+								"userIds": "123"
+							}
+						},
+						{
+							"name": "gradualRolloutRandom",
+							"parameters": {
+								"percentage": "0"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
