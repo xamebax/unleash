@@ -6565,10 +6565,10 @@ unique-temp-dir@^1.0.0:
     os-tmpdir "^1.0.1"
     uid2 "0.0.3"
 
-unleash-frontend@3.2.0-beta.0:
-  version "3.2.0-beta.0"
-  resolved "https://registry.yarnpkg.com/unleash-frontend/-/unleash-frontend-3.2.0-beta.0.tgz#3287f49b9e105a6b97f3fb42de37069260ba97a5"
-  integrity sha512-HH7+tna5BtoGVYVMjA3C4kydd2Bl6T5n+XoUFjRaYKlz4eQ+7HhDl/2zHPGD1/3VES3qkfe2Ql+lp3ygrGouxQ==
+unleash-frontend@3.2.0-beta.1:
+  version "3.2.0-beta.1"
+  resolved "https://registry.yarnpkg.com/unleash-frontend/-/unleash-frontend-3.2.0-beta.1.tgz#17a5f589918e5e5e0e89be002eadb58275d34deb"
+  integrity sha512-ebmAZ/nwbnCQsZSW8LdN1hkKm6aIuzIFRSVW0v1vcrVA63c3vFHBIrjw3SvJcCF+xN/masjIwK0ElOVmD2g9Cw==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
